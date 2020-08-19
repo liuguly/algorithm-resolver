@@ -1,14 +1,14 @@
 FROM anapsix/alpine-java:8_server-jre_unlimited
 
-MAINTAINER smallchill@163.com
+MAINTAINER lx_java@foxmail.com
 
-RUN mkdir -p /blade/gateway
+RUN mkdir -p /home/liuxin/app/
 
-WORKDIR /blade/gateway
+WORKDIR /home/liuxin
 
-EXPOSE 80
+EXPOSE 8014
 
-ADD ./target/blade-gateway.jar ./app.jar
+ADD ./target/algorithm.jar ./app.jar
 
 ENTRYPOINT ["java", "-Djava.security.egd=file:/dev/./urandom", "-jar", "app.jar"]
 

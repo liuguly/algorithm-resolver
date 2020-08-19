@@ -17,6 +17,11 @@
     <properties>
         <java.version>1.8</java.version>
         <vaadin.version>14.0.15</vaadin.version>
+        <!-- 推荐使用Harbor -->
+        <docker.image.prefix>lddw</docker.image.prefix>
+        <docker.registry.url>192.168.98.128</docker.registry.url>
+        <docker.registry.host>http://${docker.registry.url}:2375</docker.registry.host>
+        <docker.plugin.version>1.2.0</docker.plugin.version>
     </properties>
 
     <dependencies>
@@ -54,6 +59,7 @@
     </dependencies>
 
     <build>
+        <finalName>algorithm.jar</finalName>
         <plugins>
             <plugin>
                 <groupId>org.springframework.boot</groupId>
@@ -61,6 +67,28 @@
                 <configuration>
                     <fork>true</fork>
                     <includeSystemScope>true</includeSystemScope>
+                </configuration>
+            </plugin>
+
+            <!--maven  docker 打包插件 -->
+            <plugin>
+                <groupId>com.spotify</groupId>
+                <artifactId>docker-maven-plugin</artifactId>
+                <version>${docker.plugin.version}</version>
+                <configuration>
+                    <imageName>${docker.registry.url}/lddw/${project.artifactId}:${project.version}</imageName>
+                    <dockerDirectory>${project.basedir}</dockerDirectory>
+                    <dockerHost>${docker.registry.host}</dockerHost>
+                    <resources>
+                        <resource>
+                            <targetPath>/</targetPath>
+                            <directory>${project.build.directory}</directory>
+                            <include>${project.build.finalName}.jar</include>
+                        </resource>
+                    </resources>
+                    <registryUrl>${docker.registry.url}</registryUrl>
+                    <serverId>${docker.registry.url}</serverId>
+                    <pushImage>true</pushImage>
                 </configuration>
             </plugin>
         </plugins>
