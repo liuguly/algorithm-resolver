@@ -19,9 +19,16 @@
         <vaadin.version>14.0.15</vaadin.version>
         <!-- 推荐使用Harbor -->
         <docker.image.prefix>lddw</docker.image.prefix>
-        <docker.registry.url>192.168.98.128</docker.registry.url>
-        <docker.registry.host>http://${docker.registry.url}:2375</docker.registry.host>
+        <!-- 推荐使用Harbor -->
+
+<!--        <docker.registry.url>registry.cn-beijing.aliyuncs.com</docker.registry.url>-->
+<!--        <docker.host>http://192.168.98.128:2375</docker.host>-->
+<!--        <docker.host>http://123.56.10.9:2375</docker.host>-->
+        <docker.registry.url>192.168.98.131</docker.registry.url>
+        <docker.host>http://192.168.98.131:2375</docker.host>
         <docker.plugin.version>1.2.0</docker.plugin.version>
+        <docker.username>lx_java@foxmail.com</docker.username>
+        <docker.password>lx123456</docker.password>
     </properties>
 
     <dependencies>
@@ -59,7 +66,7 @@
     </dependencies>
 
     <build>
-        <finalName>algorithm.jar</finalName>
+        <finalName>algorithm</finalName>
         <plugins>
             <plugin>
                 <groupId>org.springframework.boot</groupId>
@@ -78,7 +85,7 @@
                 <configuration>
                     <imageName>${docker.registry.url}/lddw/${project.artifactId}:${project.version}</imageName>
                     <dockerDirectory>${project.basedir}</dockerDirectory>
-                    <dockerHost>${docker.registry.host}</dockerHost>
+                    <dockerHost>${docker.host}</dockerHost>
                     <resources>
                         <resource>
                             <targetPath>/</targetPath>
@@ -87,7 +94,7 @@
                         </resource>
                     </resources>
                     <registryUrl>${docker.registry.url}</registryUrl>
-                    <serverId>${docker.registry.url}</serverId>
+                    <serverId>local-registry-docker</serverId>
                     <pushImage>true</pushImage>
                 </configuration>
             </plugin>
