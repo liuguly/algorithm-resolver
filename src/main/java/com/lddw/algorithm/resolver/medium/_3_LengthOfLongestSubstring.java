@@ -66,6 +66,14 @@ public class _3_LengthOfLongestSubstring {
 
     public static void main(String[] args) {
         int result = lengthOfLongestSubstring("pwwkew");
+        String str = "pwdabdcfsfgdd";
+        int left = 0;
+        int right = 0;
+        int len = str.length();
+        for (int i = 0; i < len; i++) {
+            
+        }
+
         System.out.println(result);
     }
 

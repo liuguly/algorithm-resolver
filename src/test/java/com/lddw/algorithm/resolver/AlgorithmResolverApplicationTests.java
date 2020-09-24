@@ -10,4 +10,9 @@ class AlgorithmResolverApplicationTests {
     void contextLoads() {
     }
 
+    @Test
+    void test() {
+        
+    }
+
 }
