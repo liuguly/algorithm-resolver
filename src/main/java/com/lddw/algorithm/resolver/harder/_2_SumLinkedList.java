@@ -24,42 +24,48 @@ public class _2_SumLinkedList {
         int val;
         ListNode next;
 
-        ListNode(int x) {
+        ListNode(final int x) {
             val = x;
         }
     }
 
-    private static ListNode addTwoNumbers(ListNode l1, ListNode l2) {
-        ListNode currentNode = new ListNode((l1.val + l2.val));
-        ListNode newNode = null;
-        while(l1!=null && l2!=null){
-            if(l1.next ==null || l2.next == null) {
-                newNode = new ListNode(l1.val + l2.val);
-                currentNode.next = newNode;
-                break;
-            }
-            newNode = new ListNode(l1.next.val + l2.next.val);
-            l1 = l1.next;
-            l2 = l2.next;
-            currentNode.next = newNode;
+    public static ListNode addTwoNum(ListNode l1,ListNode l2) {
+        ListNode dNode = new ListNode(0);
+        ListNode p = l1;
+        ListNode q = l2;
+        ListNode  curr = dNode;
+        int carry = 0;
+        while (p != null || q != null) {
+            int x = (p != null) ? p.val : 0;
+            int y = (q != null) ? q.val : 0;
+            int sum = carry + x + y;
+            carry = sum / 10;
+            curr.next = new ListNode(sum % 10);
+            curr = curr.next;
+            if(p != null) p = p.next;
+            if(q != null) q = q.next;
         }
-        return currentNode;
+        if (carry > 0) {
+            curr.next = new ListNode(carry);
+        }
+        return dNode.next;
     }
 
-    public static void main(String[] args) {
-        ListNode listNode = new ListNode(3);
-        listNode.next = new ListNode(5);
-        listNode.next.next = new ListNode(7);
 
-        ListNode listNode1 = new ListNode(2);
-        listNode1.next = new ListNode(4);
-        listNode1.next.next = new ListNode(2);
+    public static void main(final String[] args) {
+        final ListNode listNode = new ListNode(2);
+        listNode.next = new ListNode(4);
+        listNode.next.next = new ListNode(3);
 
-        ListNode listNode2 = addTwoNumbers(listNode,listNode1);
+        final ListNode listNode1 = new ListNode(5);
+        listNode1.next = new ListNode(6);
+        listNode1.next.next = new ListNode(4);
 
-        while(listNode2 !=null){
-            System.out.println(listNode2.val);
-            listNode2 = listNode2.next;
+        ListNode result = addTwoNum(listNode,listNode1);
+
+        while(result !=null){
+            System.out.println(result.val);
+            result = result.next;
         }
     }
 
