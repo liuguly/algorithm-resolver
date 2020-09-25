@@ -40,7 +40,7 @@ public class _3_LengthOfLongestSubstring {
      * 来源：力扣（LeetCode） 著作权归作者所有。商业转载请联系作者获得授权，非商业转载请注明出处。
      * 
      * 
-     * @param 给定字符串
+     * @param s 给定字符串
      * @return 结果
      */
     public static int lengthOfLongestSubstring(String s) {
