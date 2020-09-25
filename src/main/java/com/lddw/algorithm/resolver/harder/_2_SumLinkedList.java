@@ -48,6 +48,35 @@ public class _2_SumLinkedList {
         return dNode.next;
     }
 
+    public static ListNode addTwoNumLinked(ListNode l1, ListNode l2) {
+        ListNode dNode = new ListNode(0);
+        ListNode p = l1;
+        ListNode q = l2;
+        ListNode currListNode = dNode;
+        int carry = 0;
+        while (p != null || q != null) {
+            int x = (p != null) ? p.val : 0;
+            int y = (q != null) ? q.val : 0;
+            int sum = carry + x + y;
+            // 获取进位值，进位值只有0和1 因为0-9范围内的两个数字相加最大不超过 9+9+1=19
+            // 这里把sum按10分成多少份，只有0和1
+            carry = sum / 10;
+            // 取余是把sum按10分成多少份后，剩余不够10的数字
+            currListNode.next = new ListNode(sum % 10);
+            currListNode = currListNode.next;
+            if (p != null) {
+                p = p.next;
+            }
+            if (q != null) {
+                q = q.next;
+            }
+        }
+        if (carry > 0) {
+            currListNode.next = new ListNode(carry);
+        }
+        return dNode.next;
+    }
+
     public static void main(final String[] args) {
         final ListNode listNode = new ListNode(2);
         listNode.next = new ListNode(4);
@@ -62,6 +91,15 @@ public class _2_SumLinkedList {
             System.out.println(result.val);
             result = result.next;
         }
+
+        int i = 20;
+        int ca = 10 / 10;
+        System.out.println(ca);
+        int r = 14 % 10;
+        System.out.println(r);
+        r = 9 % 10;
+        System.out.println(r);
+
     }
 
 }
