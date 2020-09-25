@@ -1,6 +1,8 @@
 package com.lddw.algorithm.resolver.medium;
 
+import java.util.ArrayList;
 import java.util.HashSet;
+import java.util.List;
 import java.util.Set;
 
 /**
@@ -33,7 +35,8 @@ public class _3_LengthOfLongestSubstring {
      * 以abcabcb(b)\texttt{abcabcb(b)}abcabcb(b) 开始的最长字符串为  abcabcb(b)\texttt{abcabcb(b)}abcabcb(b);
      *  
      * 使用滑动窗口来解决这个问题：
-     * 
+     * 1：左指针遍历字符串，每遍历一个，把右指针向右移动，直到出现重复的字符，需要一个数据结构来存储用hashset
+     * ()
      * 
      * 作者：LeetCode-Solution
      * 链接：https://leetcode-cn.com/problems/longest-substring-without-repeating-characters/solution/wu-zhong-fu-zi-fu-de-zui-chang-zi-chuan-by-leetc-2/
@@ -47,33 +50,25 @@ public class _3_LengthOfLongestSubstring {
         Set<Character> set = new HashSet<Character>();
         int n = s.length();
         // 右指针，初始值为 -1，相当于我们在字符串的左边界的左侧，还没有开始移动
-        int rk = -1, ans = 0;
+        int rightKey = -1, len = 0;
         for (int i = 0; i < n; i++) {
             if (i != 0) {
                 // 左指针向右移动一格，移除一个字符
                 set.remove(s.charAt(i - 1));
             }
-            while (rk + 1 < n && !set.contains(s.charAt(rk + 1))) {
+            while (rightKey + 1 < n && !set.contains(s.charAt(rightKey + 1))) {
                 //不断的移动右指针
-                set.add(s.charAt(rk + 1));
-                ++rk;
+                set.add(s.charAt(rightKey + 1));
+                ++rightKey;
             }
             //第i到rk个字符是一个极长的无重复字符
-            ans = Math.max(ans, rk - i + 1);
+            len = Math.max(len, rightKey - i + 1);
         }
-        return ans;
+        return len;
     }
 
     public static void main(String[] args) {
         int result = lengthOfLongestSubstring("pwwkew");
-        String str = "pwdabdcfsfgdd";
-        int left = 0;
-        int right = 0;
-        int len = str.length();
-        for (int i = 0; i < len; i++) {
-            
-        }
-
         System.out.println(result);
     }
 
