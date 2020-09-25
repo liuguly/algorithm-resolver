@@ -22,23 +22,11 @@ import java.util.Set;
 public class _4_FindMedianSortedArrays {
 
 
-    public static List findMedio(int[] nums1, int[] nums2) {
+    public static double findMedio(int[] nums1, int[] nums2) {
         // int[] nums1 = { 3, 4, 7, 9};
         // int[] nums2 = { 2, 5, 7, 10 };
-        List<Integer> list = new ArrayList<>();
-        for (int i = 0; i < nums1.length; i++) {
-            int valueI = nums1[i];
-            for (int j = 0; j < nums2.length; j++) {
-                int valueJ = nums2[j];
-                if (valueI > valueJ) {
-                    list.add(valueJ);
-                    list.add(valueI);
-                } else {
-                    list.add(valueJ);
-                }
-            }
-        }
-        return list;
+        // (m+n)/2   (m+n+2)/2 
+        return 0;
     }
 
 
@@ -46,8 +34,6 @@ public class _4_FindMedianSortedArrays {
     public static void main(String[] args) {
         int[] nums1 = { 3,4,7,9};
         int[] nums2 = { 2, 5, 7, 10 };
-        List set = findMedio(nums1, nums2);
-
         double result = findMedianSortedArrays(nums1, nums2);
         System.out.println(result);
     }
