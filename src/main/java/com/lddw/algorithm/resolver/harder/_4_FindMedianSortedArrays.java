@@ -1,12 +1,17 @@
 package com.lddw.algorithm.resolver.harder;
 
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Set;
+
 /**
  * 给定两个大小为 m 和 n 的正序（从小到大）数组 nums1 和 nums2。 请你找出这两个正序数组的中位数，并且要求算法的时间复杂度为
  * O(log(m + n))。 你可以假设 nums1 和 nums2 不会同时为空。
  * 
- * 示例 1: nums1 = [1, 3] nums2 = [2] 则中位数是 2.0
+ * 示例 1: nums1 = [1, 3] nums2 = [2] 则中位数是 2.0 
+ * 示例 2: nums1 = [1,2,4, 6, 9] nums2 = [3，6，9] 则中位数是 5.0 
+ * 示例 3: nums1 = [1, 2] nums2 = [3, 4,5,6] 则中位数是 (3 + 4)/2 = 3.5
  * 
- * 示例 2: nums1 = [1, 2] nums2 = [3, 4] 则中位数是 (2 + 3)/2 = 2.5
  * 
  * 来源：力扣（LeetCode）
  * 链接：https://leetcode-cn.com/problems/median-of-two-sorted-arrays
@@ -17,26 +22,32 @@ package com.lddw.algorithm.resolver.harder;
 public class _4_FindMedianSortedArrays {
 
 
-    public static double findMedio(int[] nums1, int[] nums2) {
-        int len1 = nums1.length;
-        int len2 = nums2.length;
-        int length = len1 + len2;
-        if (length % 2 == 1) {
-            int midIndex = len1 / 2;
-            
-
-        } else {
-            
+    public static List findMedio(int[] nums1, int[] nums2) {
+        // int[] nums1 = { 3, 4, 7, 9};
+        // int[] nums2 = { 2, 5, 7, 10 };
+        List<Integer> list = new ArrayList<>();
+        for (int i = 0; i < nums1.length; i++) {
+            int valueI = nums1[i];
+            for (int j = 0; j < nums2.length; j++) {
+                int valueJ = nums2[j];
+                if (valueI > valueJ) {
+                    list.add(valueJ);
+                    list.add(valueI);
+                } else {
+                    list.add(valueJ);
+                }
+            }
         }
-
-        return 0;
+        return list;
     }
 
 
 
     public static void main(String[] args) {
-        int[] nums1 = { 1, 3 };
-        int[] nums2 = { 2 };
+        int[] nums1 = { 3,4,7,9};
+        int[] nums2 = { 2, 5, 7, 10 };
+        List set = findMedio(nums1, nums2);
+
         double result = findMedianSortedArrays(nums1, nums2);
         System.out.println(result);
     }
