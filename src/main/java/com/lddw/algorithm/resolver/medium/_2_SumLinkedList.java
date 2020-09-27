@@ -48,10 +48,44 @@ public class _2_SumLinkedList {
         return dNode.next;
     }
 
+    /**
+     * 就像你在纸上计算两个数字的和那样，我们首先从最低有效位也就是列表 l1l1l1 和 l2l2l2 的表头开始相加。
+     * 由于每位数字都应当处于 0…9 的范围内，我们计算两个数字的和时可能会出现 “溢出”。例如，5+7=125 + 7 =
+     * 125+7=12。在这种情况下，我们会将当前位的数值设置为 222，并将进位 carry=1carry = 1carry=1 带入下一次迭代。
+     * 进位carry 必定是 0 或 1，这是因为两个数字相加（考虑到进位）可能出现的最大和为 9+9+1=19
+     * 
+     * 伪代码如下：
+     * 
+     * 将当前结点初始化为返回列表的哑结点。 
+     * 将进位 carry 初始化为 0。 
+     * 将 p 和 q 分别初始化为列表 l1 和 l2 的头部。 
+     * 遍历列表 l1 和 l2 直至到达它们的尾端。 
+     * 将 x 设为结点 p 的值。如果 p 已经到达l1的末尾，则将其值设置为0。 
+     * 将 y 设为结点 q 的值。如果 q 已经到达l2的末尾，则将其值设置为0。
+     * 设定 sum=x+y+carry。 
+     * 更新进位的值，carry=sum/10。 
+     * 创建一个数值为(sum mod 10)的新结点，并将其设置为当前结点的下一个结点，然后将当前结点前进到下一个结点。 
+     * 同时，将 p 和 q 前进到下一个结点。 
+     * 检查carry=1 是否成立，如果成立，则向返回列表追加一个含有数字 1 的新结点。 返回哑结点的下一个结点。
+     * 
+     * 请注意，我们使用哑结点来简化代码。如果没有哑结点，则必须编写额外的条件语句来初始化表头的值。
+     * 
+     * 请特别注意以下情况：
+     * 测试用例 	说明
+     * l1=[0,1]，l2=[0,1,2] 当一个列表比另一个列表长时
+     * l1=[]，l2=[0,1] 	当一个列表为空时，即出现空列表
+     * l1=[9,9]，l2=[1]	求和运算最后可能出现额外的进位，这一点很容易被遗忘
+     * 
+     * 
+     * @param l1
+     * @param l2
+     * @return
+     */
     public static ListNode addTwoNumLinked(ListNode l1, ListNode l2) {
         ListNode dNode = new ListNode(0);
         ListNode p = l1;
         ListNode q = l2;
+        //这里currListNode相当于指针一样
         ListNode currListNode = dNode;
         int carry = 0;
         while (p != null || q != null) {
@@ -61,7 +95,7 @@ public class _2_SumLinkedList {
             // 获取进位值，进位值只有0和1 因为0-9范围内的两个数字相加最大不超过 9+9+1=19
             // 这里把sum按10分成多少份，只有0和1
             carry = sum / 10;
-            // 取余是把sum按10分成多少份后，剩余不够10的数字
+            // 取余是把sum按10分成多少份后，剩余不够10的数字，也即单位相加结果集
             currListNode.next = new ListNode(sum % 10);
             currListNode = currListNode.next;
             if (p != null) {
