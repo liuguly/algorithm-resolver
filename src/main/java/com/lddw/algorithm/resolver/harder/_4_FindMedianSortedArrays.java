@@ -27,7 +27,6 @@ public class _4_FindMedianSortedArrays {
     }
 
 
-
     public static void main(String[] args) {
         int[] nums1 = { 3,4,7,9};
         int[] nums2 = { 2, 5, 7, 10 };
