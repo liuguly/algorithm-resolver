@@ -25,10 +25,14 @@ public class _3_LengthOfLongestSubstring {
     /**
      * 给定一个字符串，请你找出其中不含有重复字符的 最长子串 的长度。
      * 
-     * 以(a)bcabcbb开始的最长字符串为 (abc)abcbb 以a(b)cabcbb开始的最长字符串为 a(bca)bcbb
-     * 以ab(c)abcbb开始的最长字符串为 ab(cab)cbb 以abc(a)bcbb开始的最长字符串为 abc(abc)bb
-     * 以abca(b)cbb开始的最长字符串为 abca(bc)bb 以abcab(c)bb开始的最长字符串为 abcab(cb)b
-     * 以abcabc(b)b开始的最长字符串为 abcabc(b)b 以abcabcb(b)开始的最长字符串为 abcabcb(b)
+     * 以(a)bcabcbb开始的最长字符串为 (abc)abcbb 
+     * 以a(b)cabcbb开始的最长字符串为 a(bca)bcbb
+     * 以ab(c)abcbb开始的最长字符串为 ab(cab)cbb 
+     * 以abc(a)bcbb开始的最长字符串为 abc(abc)bb
+     * 以abca(b)cbb开始的最长字符串为 abca(bc)bb 
+     * 以abcab(c)bb开始的最长字符串为 abcab(cb)b
+     * 以abcabc(b)b开始的最长字符串为 abcabc(b)b 
+     * 以abcabcb(b)开始的最长字符串为 abcabcb(b)
      * 
      * 使用滑动窗口来解决这个问题： 1：左指针遍历字符串，每遍历一个，把右指针向右移动，直到出现重复的字符，需要一个数据结构来存储用hashset ()
      * 
@@ -67,7 +71,7 @@ public class _3_LengthOfLongestSubstring {
         //遍历字符串左指针初始位置0
         for (int leftKey = 0; leftKey < strLength; leftKey++) {
             if (leftKey != 0) {
-                //左指针向右移动一格，集合移除左边一个字符
+                //左指针向右移动一格，集合移除一个字符
                 set.remove(str.charAt(leftKey - 1));
             }
             //右指针向右移动，直到遇见重复字符跳出循环。
@@ -75,7 +79,7 @@ public class _3_LengthOfLongestSubstring {
                 set.add(str.charAt(rightKey + 1));
                 ++rightKey;
             }
-            //每循环一次取值最大，循环完即可获取最终最大值
+            //每循环完一次右指针取最大值，循环完即可获取最终最大值
             result = Math.max(result, rightKey - leftKey + 1);
         }
         return result;
