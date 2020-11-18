@@ -1,4 +1,4 @@
-package com.lddw.algorithm.resolver.harder;
+package com.lddw.algorithm.resolver.medium;
 
 /**
  * <p>
