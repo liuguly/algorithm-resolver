@@ -3,7 +3,8 @@ package com.lddw.algorithm.resolver;
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;
 
-@SpringBootTest
+import java.util.PriorityQueue;
+
 class AlgorithmResolverApplicationTests {
 
     @Test
@@ -12,7 +13,9 @@ class AlgorithmResolverApplicationTests {
 
     @Test
     void test() {
-        
+        PriorityQueue<Integer> priorityQueue = new PriorityQueue<>();
+
+
     }
 
 }

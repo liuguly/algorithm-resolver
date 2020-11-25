@@ -1,7 +1,5 @@
 package com.lddw.algorithm.resolver.sort;
 
-import cn.hutool.core.util.ArrayUtil;
-
 import java.util.Arrays;
 
 public class MergeSort {
@@ -11,7 +9,6 @@ public class MergeSort {
             return;
         }
         int mid = L +((R-L) >> 1);
-        mid = (L + R)/2;
         sortProcess(arr,L,mid);
         sortProcess(arr,mid+1,R);
         merge(arr,L,mid,R);
