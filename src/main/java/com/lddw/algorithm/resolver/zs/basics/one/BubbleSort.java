@@ -1,4 +1,4 @@
-package com.lddw.algorithm.resolver.zs.basics.sort;
+package com.lddw.algorithm.resolver.zs.basics.one;
 
 /**
  * <p>描述 TODO</p>
