@@ -25,7 +25,7 @@ package com.lddw.algorithm.resolver.harder;
  * 
  * @author liuxin
  */
-public class _4_FindMedianSortedArrays {
+public class FindMedianSortedArrays {
 
     public static double findMedio(int[] nums1, int[] nums2) {
         // int[] nums1 = { 3, 4, 7, 9,11,12};

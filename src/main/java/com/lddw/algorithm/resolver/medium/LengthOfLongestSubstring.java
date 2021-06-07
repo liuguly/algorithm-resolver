@@ -18,7 +18,7 @@ import java.util.Set;
  * 
  * @author liuxin
  */
-public class _3_LengthOfLongestSubstring {
+public class LengthOfLongestSubstring {
 
     /**
      * 给定一个字符串，请你找出其中不含有重复字符的 最长子串 的长度。

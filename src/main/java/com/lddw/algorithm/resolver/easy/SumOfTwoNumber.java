@@ -22,7 +22,7 @@ import java.util.Map;
  * @date 2019/12/5 10:13
  * @since 1.0
  **/
-public class _1_SumOfTwoNumber {
+public class SumOfTwoNumber {
 
     /**
      * 两次循环时间复杂度o(n²)

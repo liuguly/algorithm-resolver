@@ -10,7 +10,7 @@ package com.lddw.algorithm.resolver.medium;
  *   d 0  0  0  0  1
  *
  */
-public class _5_LongestPalindrome {
+public class LongestPalindrome {
 
     public String longestPalindrome(String s) {
         return "";

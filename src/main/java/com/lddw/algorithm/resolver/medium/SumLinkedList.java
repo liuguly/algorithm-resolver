@@ -13,7 +13,7 @@ package com.lddw.algorithm.resolver.medium;
  * @date 2019/12/5 11:08
  * @since 1.0
  **/
-public class _2_SumLinkedList {
+public class SumLinkedList {
 
     static class ListNode {
         int val;
@@ -56,8 +56,7 @@ public class _2_SumLinkedList {
      * 
      * 伪代码如下：
      * 
-     * 将当前结点初始化为返回列表的哑结点。 
-     * 将进位 carry 初始化为 0。 
+     * 将当前结点初始化为返回列表的哑结点。 789/    * 将进位 carry 初始化为 0。
      * 将 p 和 q 分别初始化为列表 l1 和 l2 的头部。 
      * 遍历列表 l1 和 l2 直至到达它们的尾端。 
      * 将 x 设为结点 p 的值。如果 p 已经到达l1的末尾，则将其值设置为0。 
