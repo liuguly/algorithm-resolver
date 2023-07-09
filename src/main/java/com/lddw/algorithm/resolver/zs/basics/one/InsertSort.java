@@ -39,9 +39,11 @@ public class InsertSort {
 		int[] arr = {2, 4, 3, 11, 7, 6, 9, 7, 22, 15, 13, 11};
 		insertionSort(arr);
 		System.out.println(ArrayUtil.toString(arr));
-		int a = 1;
-		int b = 1;
-		System.out.println(a ^ b);
+		int a = 24;
+		int b = 331;
+		int c = a^b;
+		System.out.println(c);
+		System.out.println(a ^ c);
 	}
 
 }
